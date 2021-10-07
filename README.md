@@ -1,2 +1,2 @@
-# myMeetings---React
+# myMeetings
 Meeting management app

@@ -1,18 +1,18 @@
 {
-  "meeting": {
-    "4e7fe52c-535c-42e9-80ea-3fsdf123695c": {
-      "id": "4e7fe52c-535c-42e9-80ea-3fsdf123695c",
+  "meeting": [
+    {
+      "id": "1",
       "label": "Test Meeting 1",
       "description": "Test Description 1",
       "duration": 15,
       "priority": "High"
     },
-    "4e7fe52c-535c-42e9-80ea-3123123695c": {
-      "id": "4e7fe52c-535c-42e9-80ea-3123123695c",
+    {
+      "id": "2",
       "label": "Test Meeting 2",
       "description": "Test Description 2",
       "duration": 15,
       "priority": "High"
     }
-}
+  ]
 }

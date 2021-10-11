@@ -1,7 +1,8 @@
 # Meeting App (Dockerized React Webpack App)
 - `start` development server with command `docker-compose up`
+  ###### app will start `localhost:8080`
 - `build` your app using `npm run build` command, your build appears in `dist` folder
-  - ###### test will start before build
+  ###### test will start before build
 
 # Some useful commands
 

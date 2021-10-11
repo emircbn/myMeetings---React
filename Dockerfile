@@ -1,9 +1,8 @@
-# Dockerfile (tag: v3)
-FROM node:latest
+FROM node:lts-alpine
 RUN mkdir /app
 WORKDIR /app
-COPY package.json /app/
+COPY package.json .
 RUN npm install
-COPY . /app
+COPY . .
 EXPOSE 8080
-CMD [ "npm", "start" ]
+CMD [ "npm", "start", "--open", "true"]

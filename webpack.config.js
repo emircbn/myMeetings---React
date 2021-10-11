@@ -1,7 +1,10 @@
+const webpack = require("webpack");
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const apiMocker = require('connect-api-mocker');
 
 module.exports = {
+  mode: process.env.NODE_ENV,
   devtool: "source-map",
   entry: ["@babel/polyfill", "./src/index.js"],
   output: {
@@ -18,15 +21,34 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.less$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "less-loader",
+            options: {
+              lessOptions: {
+                modifyVars: {
+                  "border-radius-base": "5px",
+                  "font-size-base": "12px",
+                  "primary-color": "#145388"
+                },
+                javascriptEnabled: true
+              }
+            }
+          }]
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader"
         }
-      },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
@@ -36,19 +58,22 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    hot: true,
+    contentBase: path.join(__dirname, 'dist'),
     port: 8080,
-    host: '0.0.0.0',
-    open: true,
+    host: "0.0.0.0",
+    public: "localhost:8080",
+    hot: true,
+    inline: true,
     historyApiFallback: true,
-    watchOptions: {
-      aggregateTimeout: 500, // delay before reloading
-      poll: 1000 // enable polling since fsevents are not supported in docker
-    }
+    before: function(app) {
+      app.use("/api", apiMocker("mocks/api"));
+    },
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.MOCK_API_BASE_URL': JSON.stringify(process.env.MOCK_API_BASE_URL),
+      'process.env.MOCK_API_SECRET_KEY': JSON.stringify(process.env.MOCK_API_SECRET_KEY)
+    }),
     new HtmlWebPackPlugin({
       filename: "index.html",
       template: __dirname + "/public/index.html",

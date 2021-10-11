@@ -1,0 +1,9 @@
+{
+  "id": "kumkf2egtsk8vlj386",
+  "label": "Test Meeting 2",
+  "description": "Test Description 2",
+  "duration": 50,
+  "date": "2021-11-10 12:00",
+  "link": "www.example.com",
+  "priority": "High"
+}

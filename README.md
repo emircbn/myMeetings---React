@@ -1,4 +1,4 @@
-# App
+# Meeting App (Dockerized React Webpack App)
 - `start` development server with command `docker-compose up`
 - `build` your app using `npm run build` command, your build appears in `dist` folder
   - ###### test will start before build
@@ -20,6 +20,7 @@ it uses jest for testing. run this command for run tests: `npm run test`
  - Webpack 5 [doc](https://webpack.js.org/concepts/)
 
 # Enabled Babel Plugins
+
 - @babel/plugin-proposal-class-properties [doc](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties)
 - @babel/plugin-proposal-export-default-from [doc](https://babeljs.io/docs/en/babel-plugin-proposal-export-default-from)
 - @babel/plugin-proposal-export-namespace-from [doc](https://babeljs.io/docs/en/babel-plugin-proposal-export-namespace-from)

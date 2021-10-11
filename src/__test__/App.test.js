@@ -1,8 +1,8 @@
-import 'regenerator-runtime/runtime'
+import 'regenerator-runtime/runtime';
 import React from 'react';
 import App from '../App';
-import { render, fireEvent, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom'
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 describe('<App />', () => {
   const setup = () => {
@@ -11,8 +11,8 @@ describe('<App />', () => {
     return {
       text,
       ...utils
-    }
-  }
+    };
+  };
 
   it('should render welcome message', () => {
     const app = setup();
